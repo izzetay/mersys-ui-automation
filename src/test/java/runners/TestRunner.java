@@ -26,3 +26,5 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     // Paralel test koşumu yapılacaksa TestNG'nin bu metodu Override edilir (Şimdilik boş kalabilir)
 }
 
+//test push
+
