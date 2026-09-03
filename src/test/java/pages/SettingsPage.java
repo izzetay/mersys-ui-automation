@@ -40,7 +40,7 @@ public class SettingsPage {
     @FindBy(css = "#ms-save-button-0")
     public WebElement saveButton;
 
-    @FindBy(css = "//*[contains(text(), 'Profile succesfully updated')]")
+    @FindBy(xpath = "//*[contains(text(), 'Profile succesfully updated')]")
     public WebElement saveConfirm;
 
 
