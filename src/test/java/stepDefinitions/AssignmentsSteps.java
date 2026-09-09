@@ -17,11 +17,12 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 import static pages.ParentPage.hover;
-import static pages.ParentPage.wait;
+import static utilities.GWD.getDriver;
 
 public class AssignmentsSteps {
 
-    AssignmentsPage ap = new AssignmentsPage(GWD.getDriver());
+    AssignmentsPage ap = new AssignmentsPage(getDriver());
+    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
     @Given("User hovers over the {string} link on the home page")
     public void userHoversOverLinkNameOnHomepage(String linkName) {
@@ -45,7 +46,7 @@ public class AssignmentsSteps {
             case "Assignments":
                 wait.until(ExpectedConditions.visibilityOf(ap.assignmentsLink));
 
-                JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+                JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
                 js.executeScript("arguments[0].click();", ap.assignmentsLink);
 
@@ -120,7 +121,7 @@ public class AssignmentsSteps {
     public void userVerifiesNoSuccessDisplayed(String successText) {
 
         try {
-            WebDriverWait shortWait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(3));
+            WebDriverWait shortWait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
             shortWait.until(ExpectedConditions.visibilityOf(ap.successMessage));
 
             Assert.fail("HATA: Ekranda Success mesajı çıktı! (Kabul kriterine aykırı)");

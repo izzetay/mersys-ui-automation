@@ -3,14 +3,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.CalenderPage;
-import utilities.GWD;
-import static pages.ParentPage.wait;
+import java.time.Duration;
+import static utilities.GWD.getDriver;
 
 public class CalenderSteps {
 
-     CalenderPage cp = new CalenderPage(GWD.getDriver());
+     CalenderPage cp = new CalenderPage(getDriver());
+     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));;
 
     @Then("User is able to see class names")
     public void userIsAbleToSeeClassNames() {
@@ -76,7 +78,6 @@ public class CalenderSteps {
             System.out.println("Verified: " + tabName + " tab is visible and working.");
         }
     }
-
 
 }
 
