@@ -17,7 +17,7 @@ public class LoginPage extends ParentPage {
     @FindBy(css = "input[formcontrolname='password']")
     public WebElement passwordBox;
 
-    @FindBy(xpath = "//span[text()=' LOGIN ']")
+    @FindBy(xpath = "//span[normalize-space()='GİRİŞ YAP']")
     public WebElement loginButton;
 
 }
