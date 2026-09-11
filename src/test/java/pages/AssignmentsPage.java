@@ -46,4 +46,22 @@ public class AssignmentsPage extends ParentPage{
     @FindBy(css = "div[class='comment-time secondary-text']")
     public List<WebElement> commentTimeList;
 
+    // US-20
+    // Ödev listesindeki Information (Bilgi) ikonlarını temsil eden elementler
+    @FindBy(css = "ms-icon-button[icon='info']")
+    public List<WebElement> informationButtonsList;
+
+    // US-20 Ödev listesindeki Submit (Gönderme) ikonlarını temsil eden elementler
+    @FindBy(css = "ms-icon-button[icon='file-import']")
+    public List<WebElement> submitButtonsList;
+
+    // US-20 - Mark it (Favorite) butonları
+    @FindBy(css = "ms-icon-button[icon='star']")
+    public List<WebElement> markButtonsList;
+
+    // US-20 - Ödev listesindeki ödev satırları
+    @FindBy(css = "div.assignment")
+    public List<WebElement> assignmentRowsList;
+
+
 }
