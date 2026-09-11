@@ -106,6 +106,12 @@ public class US009_US010_HamMenuFinance extends GWD {
     @And("User clicks 'Stripe' to pay.")
     public void StripePay() {
         click(finance.pay, 3);
+
+    }
+    @Then("User should be able to access Finance page.")
+    public void verifyFinancePage() {
+        wait.until(ExpectedConditions.visibilityOf(finance.chooseName));
+        Assert.assertTrue(finance.chooseName.isDisplayed());
     }
 
 }
