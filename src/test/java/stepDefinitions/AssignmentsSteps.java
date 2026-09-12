@@ -138,6 +138,74 @@ public class AssignmentsSteps {
         Assert.assertTrue(ap.commentTimeList.get(sonMesajIndex).isDisplayed(), "HATA: Gönderilen mesajın saati akışta görünmüyor!");
         System.out.println("Mesaj başarıyla gönderildi ve saati akışta teyit edildi: " + ap.commentTimeList.get(sonMesajIndex).getText());
     }
+
+    @Then("User should see Information, Submit and Mark it icons on a random assignment")
+    public void userShouldSeeQuickActionIconsOnRandomAssignment() {
+
+        wait.until(ExpectedConditions.visibilityOfAllElements(ap.informationButtonsList));
+        wait.until(ExpectedConditions.visibilityOfAllElements(ap.submitButtonsList));
+        wait.until(ExpectedConditions.visibilityOfAllElements(ap.markButtonsList));
+
+        int minCount = Math.min(
+                ap.informationButtonsList.size(),
+                Math.min(ap.submitButtonsList.size(), ap.markButtonsList.size())
+        );
+
+        Assert.assertTrue(minCount > 0, "Kontrol edilecek ödev bulunamadı!");
+
+        int randomIndex = (int) (Math.random() * minCount);
+
+        Assert.assertTrue(ap.informationButtonsList.get(randomIndex).isDisplayed(),
+                "Information ikonu görünmüyor!");
+
+        Assert.assertTrue(ap.submitButtonsList.get(randomIndex).isDisplayed(),
+                "Submit ikonu görünmüyor!");
+
+        Assert.assertTrue(ap.markButtonsList.get(randomIndex).isDisplayed(),
+                "Mark it ikonu görünmüyor!");
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                ap.informationButtonsList.get(randomIndex)));
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                ap.submitButtonsList.get(randomIndex)));
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                ap.markButtonsList.get(randomIndex)));
+    }
+
+    @When("User clicks anywhere except the icons on a random assignment")
+    public void userClicksRandomAssignment() {
+
+        wait.until(ExpectedConditions.visibilityOfAllElements(ap.assignmentRowsList));
+
+        int randomIndex = (int) (Math.random() * ap.assignmentRowsList.size());
+
+        ParentPage.click(ap.assignmentRowsList.get(randomIndex), 10);
+    }
+
+    @Then("User should access the assignment details page")
+    public void userShouldAccessAssignmentDetailsPage() {
+
+        wait.until(ExpectedConditions.urlContains("/my-assignments/info/"));
+
+        Assert.assertTrue(
+                getDriver().getCurrentUrl().contains("/my-assignments/info/"),
+                "Assignment detay sayfasına yönlendirilmedi!");
+    }
+
+    @Then("User should see Discussion icon if a discussion exists for the assignment")
+    public void userShouldSeeDiscussionIconIfDiscussionExists() {
+
+        if (!ap.discussionButtonsList.isEmpty()) {
+            Assert.assertTrue(
+                    ap.discussionButtonsList.get(0).isDisplayed(),
+                    "Discussion ikonu görünmüyor!"
+            );
+        } else {
+            System.out.println("Bu ödevler için aktif discussion bulunmadı.");
+        }
+    }
 }
 
 
