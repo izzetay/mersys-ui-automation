@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AssignmentsPage extends ParentPage{
+public class AssignmentsPage extends ParentPage {
 
     public AssignmentsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -46,6 +46,39 @@ public class AssignmentsPage extends ParentPage{
     @FindBy(css = "div[class='comment-time secondary-text']")
     public List<WebElement> commentTimeList;
 
+    //US-21
+    @FindBy(css = "ms-icon-button[icon='file-import']")
+    public List<WebElement> submissionButtons;
+
+    @FindBy(xpath = "//span[contains(text(), '100')]")
+    public List<WebElement> numberOfHomeworks;
+
+    @FindBy(css = "ms-dialog")
+    public WebElement submissionDialog;
+
+    @FindBy(css = "div.ms-toast__headline")
+    public WebElement successMessageOnSubmission;
+
+    @FindBy(xpath = "//*[text()='Attach Files...']")
+    public WebElement attachFiles;
+
+    @FindBy(xpath = "//*[text()=' From Local ']")
+    public WebElement attachFromLocal;
+
+    @FindBy(xpath = "//button[.//*[text()='Save As Draft']]")
+    public WebElement saveAsDraft;
+
+    @FindBy(xpath = "//button[.//*[text()='Submit']]")
+    public WebElement submitButton;
+
+    @FindBy(xpath = "//button[.//*[normalize-space(text())='Yes']]")
+    public WebElement yesButton;
+
+    @FindBy(css = ".assignment")
+    public WebElement firstHomeworkButton;
+
+    @FindBy(xpath = "//*[text()='New Submission']")
+    public WebElement submissonButton;
     // US-20
     // Ödev listesindeki Information (Bilgi) ikonlarını temsil eden elementler
     @FindBy(css = "ms-icon-button[icon='info']")

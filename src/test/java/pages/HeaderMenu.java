@@ -31,5 +31,7 @@ public class HeaderMenu {
     @FindBy(xpath = "//*[text()=\"Trash\"]")
     public WebElement headerTrashButton;
 
+    @FindBy(xpath = "//*[@caption=\"NAV.GRADING.TITLE\"]")
+    public WebElement headerGradingButton;
 
 }
