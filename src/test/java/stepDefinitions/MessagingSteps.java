@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import io.cucumber.java.PendingException;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,14 +26,20 @@ public class MessagingSteps {
         ParentPage.click(mp.newMessageButton,10);
     }
 
+    @And("User closes the error message")
+    public void userClosesTheErrorMessage() {
+        ParentPage.click(mp.closeErrorButton,10);
+    }
+
     @When("User clicks on the {string} icon, searches for {string} and selects a receiver")
     public void userClicksOnIconAndSelectsReceiver(String icon, String searchText) {
+        wait.until(ExpectedConditions.elementToBeClickable(mp.receiversIcon));
         ParentPage.click(mp.receiversIcon,10);
         mp.receiverSearchBox.sendKeys(searchText);
 
-        wait.until(ExpectedConditions.visibilityOfAllElements(mp.receiverOptions));
-        ParentPage.click(mp.receiverOptions.get(0),10);
-        ParentPage.click(mp.addButton,10);
+        wait.until(ExpectedConditions.visibilityOfAllElements(mp.receiverOption));
+        ParentPage.click(mp.receiverOption,10);
+        ParentPage.click(mp.addAndCloseButton,10);
     }
 
     @When("User enters {string} as the message subject")
@@ -45,7 +53,8 @@ public class MessagingSteps {
     }
     @When("User attaches a sample file from the {string} section")
     public void userAttachesSampleFile(String attachText) {
-        String dosyaYolu = "\"C:\\Users\\isTheVAC\\Downloads\\blank.png\"";
+        String projeYolu = System.getProperty("user.dir");
+        String dosyaYolu = projeYolu + "\\src\\test\\resources\\files\\blank.png";
 
         mp.fileUploadInput.sendKeys(dosyaYolu);
     }

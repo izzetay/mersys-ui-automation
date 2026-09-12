@@ -40,4 +40,45 @@ public class MessagingPage extends ParentPage {
 
     @FindBy(xpath = "//button[.//*[normalize-space(text())='Delete']]")
     public WebElement dialogAnswer;
+
+    @FindBy (xpath = "(//span[@class='mdc-button__label'])[6]")
+    public WebElement hamburgerMenu;
+
+    @FindBy(xpath = "//span[text()='Messaging']")
+    public WebElement messagingLink;
+
+    @FindBy(xpath = "//span[text()='Send Message']")
+    public WebElement newMessageButton;
+
+    @FindBy(css = "fa-icon[class='ng-fa-icon btn-fa btn-fa--table']")
+    public WebElement receiversIcon;
+
+    @FindBy(css = "(//div[@class='mat-mdc-form-field-flex'])[8]")
+    public WebElement receiverSearchBox;
+
+    @FindBy(css = "div[aria-describedby='cdk-describedby-message-ng-1-54']")
+    public WebElement receiverOption;
+
+    @FindBy(xpath = "//span[text()='Add & Close']")
+    public WebElement addAndCloseButton;
+
+    @FindBy(css = "ms-text-field[formcontrolname='title']")
+    public WebElement subjectBox;
+
+    @FindBy(id = "#tiny-angular_69952994311789242592362_ifr")
+    public WebElement textEditorBox;
+
+    @FindBy(css = "input[type='file']")
+    public WebElement fileUploadInput;
+
+    @FindBy(xpath = "//span[text()='Send']")
+    public WebElement sendButton;
+
+    @FindBy(xpath = "//span[text()='Send']")
+    public WebElement outboxLink;
+
+    @FindBy(css = "svg[data-icon='xmark']")
+    public WebElement closeErrorButton;
+
+
 }
