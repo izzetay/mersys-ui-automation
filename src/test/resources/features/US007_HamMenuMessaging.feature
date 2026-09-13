@@ -1,8 +1,8 @@
 Feature: Messaging Feature
 
   Background:
-    Given User Opens the website.
-    And Logs into website.
+    Given User navigates to the "https://test.mersys.io/" page
+    And User logs in with valid credentials
 
   Scenario: User restores a deleted message from Trash
     When User clicks hamburger menu.
