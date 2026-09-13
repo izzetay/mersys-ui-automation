@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class MessagingPage extends ParentPage {
     public MessagingPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -53,32 +55,49 @@ public class MessagingPage extends ParentPage {
     @FindBy(css = "fa-icon[class='ng-fa-icon btn-fa btn-fa--table']")
     public WebElement receiversIcon;
 
-    @FindBy(css = "(//div[@class='mat-mdc-form-field-flex'])[8]")
+    @FindBy(xpath = "(//input[contains(@class, 'mat-mdc-input-element')])[5]")
     public WebElement receiverSearchBox;
 
-    @FindBy(css = "div[aria-describedby='cdk-describedby-message-ng-1-54']")
+    @FindBy(xpath = "//span[text()=' Head Teacher ']")
     public WebElement receiverOption;
 
     @FindBy(xpath = "//span[text()='Add & Close']")
     public WebElement addAndCloseButton;
 
-    @FindBy(css = "ms-text-field[formcontrolname='title']")
+    @FindBy(css = "input[id='ms-text-field-0']")
     public WebElement subjectBox;
 
-    @FindBy(id = "#tiny-angular_69952994311789242592362_ifr")
+    @FindBy(css = "div[class='tox-edit-area']")
     public WebElement textEditorBox;
-
-    @FindBy(css = "input[type='file']")
-    public WebElement fileUploadInput;
 
     @FindBy(xpath = "//span[text()='Send']")
     public WebElement sendButton;
 
-    @FindBy(xpath = "//span[text()='Send']")
+    @FindBy(xpath = "//span[text()='Outbox']")
     public WebElement outboxLink;
 
-    @FindBy(css = "svg[data-icon='xmark']")
+    @FindBy(css = "svg[class='svg-inline--fa fa-xmark fa-fw']")
     public WebElement closeErrorButton;
 
+    @FindBy(css = "input[class='mdc-checkbox__native-control']")
+    public List<WebElement> allMessages;
+
+    @FindBy(xpath = "//span[text()='Move To Trash']")
+    public WebElement moveToTrashButton;
+
+    @FindBy(xpath = "//span[text()=' Yes ']")
+    public WebElement confirmMessageDeleteButton;
+
+    @FindBy(xpath = "//div[text()='Message successfully moved to trash!']")
+    public WebElement messageDeleteledConfirmation;
+
+    @FindBy(xpath = "//span[text()='Attach Files...']")
+    public WebElement attachFilesButton;
+
+    @FindBy(css = "button[aria-label='Close']")
+    public WebElement succesMsgCloseButton;
+
+    @FindBy(css = "span[class='mat-mdc-select-min-line']")
+    public WebElement allMessagesCount;
 
 }
