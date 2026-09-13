@@ -20,9 +20,6 @@ public class MessagingPage extends ParentPage {
     @FindBy(css = "input.mat-end-date")
     public WebElement date2;
 
-    @FindBy(xpath = "//*[text()=' This year ']")
-    public WebElement dateThisYear;
-
     @FindBy(xpath = "//*[text()='Search']")
     public WebElement search;
 
@@ -40,4 +37,17 @@ public class MessagingPage extends ParentPage {
 
     @FindBy(xpath = "//button[.//*[normalize-space(text())='Delete']]")
     public WebElement dialogAnswer;
+
+    @FindBy(xpath = "//*[text()=\"Send Message\"]")
+    public WebElement sendMessageButton;
+
+    @FindBy(xpath = "//*[text()=\"Inbox\"]")
+    public WebElement inboxButton;
+
+    @FindBy(xpath = "//*[text()=\"Outbox\"]")
+    public WebElement outboxButton;
+
+    @FindBy(xpath = "//*[text()=\"Trash\"]")
+    public WebElement trashButton;
+
 }

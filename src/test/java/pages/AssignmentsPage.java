@@ -96,5 +96,26 @@ public class AssignmentsPage extends ParentPage {
     @FindBy(css = "div.assignment")
     public List<WebElement> assignmentRowsList;
 
+    //US_22
+    @FindBy(xpath = "//button[.//*[normalize-space(text())='Search']]")
+    public WebElement searchButton;
+
+    @FindBy(xpath = "(//mat-select)[1]")
+    public WebElement classFilterDropdown;
+
+    @FindBy(xpath = "(//mat-select)[2]")
+    public WebElement statusFilterDropdown;
+
+    @FindBy(xpath = "(//mat-select)[3]")
+    public WebElement semesterFilterDropdown;
+
+    @FindBy(css = "mat-option")
+    public List<WebElement> filterOptionsList;
+
+    @FindBy(css = "ms-drop-down button")
+    public WebElement showByDropdownButton;
+
+    @FindBy(css = ".mat-mdc-menu-item")
+    public List<WebElement> showByMenuItemsList;
 
 }
