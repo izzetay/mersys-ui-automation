@@ -1,8 +1,8 @@
 Feature: Grading - Print and Download Transcript
 
   Background:
-    Given User Opens the website.
-    And Logs into website.
+    Given User navigates to the "https://test.mersys.io/" page
+    And User logs in with valid credentials
 
   Scenario: User views and downloads their Course Grade transcript as PDF
     When User navigates to the 'Grading' page.
