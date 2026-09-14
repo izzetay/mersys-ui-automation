@@ -100,4 +100,7 @@ public class MessagingPage extends ParentPage {
     @FindBy(css = "span[class='mat-mdc-select-min-line']")
     public WebElement allMessagesCount;
 
+    @FindBy(xpath = "//*[text()=\"Trash\"]")
+    public WebElement testdd;
+
 }
