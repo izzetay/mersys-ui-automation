@@ -1,8 +1,8 @@
 Feature: Homework Submission
 
   Background:
-    Given User Opens the website.
-    And Logs into website.
+    Given User navigates to the "https://test.mersys.io/" page
+    And User logs in with valid credentials
 
   Scenario: User sees the submit icon for each homework
     When User navigates to the 'Assignments' page.

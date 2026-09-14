@@ -30,15 +30,15 @@ public class US007_HamMenuMessaging extends GWD {
         actions.click(messaging.date2).click(messaging.date2).click(messaging.date2).perform();
         messaging.date2.sendKeys("01012027");
 
-        click(messaging.search,4);
+        click(messaging.search, 4);
 
     }
 
 
     @And("User clicks 'Messaging' and then 'Trash'.")
     public void clicksMessagingThenTrash() {
-        click(header.headerMessagingButton,5);
-        click(header.headerTrashButton,5);
+        click(header.headerMessagingButton, 5);
+        click(header.headerTrashButton, 5);
 
     }
 
