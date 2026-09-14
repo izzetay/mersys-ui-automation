@@ -108,4 +108,7 @@ public class MessagingPage extends ParentPage {
     @FindBy(xpath = "//*[text()=\"Trash\"]")
     public WebElement trashButton;
 
+    @FindBy(xpath = "//*[text()=\"Trash\"]")
+    public WebElement testdd;
+
 }
