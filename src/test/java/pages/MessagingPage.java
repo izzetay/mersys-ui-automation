@@ -103,4 +103,7 @@ public class MessagingPage extends ParentPage {
     @FindBy(xpath = "//*[text()=\"Trash\"]")
     public WebElement testdd;
 
+    @FindBy(xpath = "//*[text()='Inbox']")
+    public WebElement inboxButton;
+
 }
