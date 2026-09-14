@@ -216,25 +216,23 @@ public class CalenderSteps {
 
         wait.until(driver -> {
             try {
-                return !cp.responsibleCourses.isEmpty()
-                        && cp.responsibleCourses.get(0).isDisplayed();
+                if (cp.responsibleCourses.isEmpty()) {
+                    return false;
+                }
+
+                WebElement course = cp.responsibleCourses.get(0);
+
+                if (course.isDisplayed() && course.isEnabled()) {
+                    course.click();
+                    return true;
+                }
+
+                return false;
+
             } catch (org.openqa.selenium.StaleElementReferenceException e) {
                 return false;
             }
         });
-
-        Assert.assertFalse(cp.responsibleCourses.isEmpty(),
-                "No responsible courses are displayed!");
-
-        // DOM yenilenmiş olabileceği için elementi tekrar alıyoruz
-        WebElement course = cp.responsibleCourses.get(0);
-
-        wait.until(ExpectedConditions.elementToBeClickable(course));
-
-        Assert.assertTrue(course.isDisplayed(),
-                "Responsible course is not visible!");
-
-        course.click();
 
         System.out.println("A responsible course is visible and clickable.");
     }
