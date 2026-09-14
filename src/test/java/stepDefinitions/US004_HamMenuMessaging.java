@@ -42,7 +42,7 @@ public class US004_HamMenuMessaging extends GWD {
 
     @Then("User should see the 'New Message' page.")
     public void checkNewMessageLinkVisible() {
-        wait.until(ExpectedConditions.elementToBeClickable(messaging.sendMessageButton));
+        wait.until(ExpectedConditions.elementToBeClickable(messaging.newMessageButton));
 
     }
 
@@ -54,19 +54,19 @@ public class US004_HamMenuMessaging extends GWD {
 
     @And("User should see the 'Outbox' page.")
     public void checkOutboxLinkVisible() {
-        wait.until(ExpectedConditions.elementToBeClickable(messaging.outboxButton));
+        wait.until(ExpectedConditions.elementToBeClickable(messaging.outboxLink));
 
     }
 
     @And("User should see the 'Trash' page.")
     public void checkTrashLinkVisible() {
-        wait.until(ExpectedConditions.elementToBeClickable(messaging.outboxButton));
+        wait.until(ExpectedConditions.elementToBeClickable(messaging.outboxLink));
 
     }
 
     @When("User clicks the 'New Message' page.")
     public void clickNewMessageLink() {
-        click(messaging.sendMessageButton, 10);
+        click(messaging.newMessageButton, 10);
 
     }
 
@@ -93,8 +93,8 @@ public class US004_HamMenuMessaging extends GWD {
 
     @When("User clicks the 'Outbox' page.")
     public void clickOutboxLink() {
-        wait.until(ExpectedConditions.elementToBeClickable(messaging.outboxButton));
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", messaging.outboxButton);
+        wait.until(ExpectedConditions.elementToBeClickable(messaging.outboxLink));
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", messaging.outboxLink);
 
     }
 
@@ -107,8 +107,8 @@ public class US004_HamMenuMessaging extends GWD {
 
     @When("User clicks the 'Trash' page.")
     public void clickTrashLink() {
-        wait.until(ExpectedConditions.elementToBeClickable(messaging.trashButton));
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", messaging.trashButton);
+        wait.until(ExpectedConditions.elementToBeClickable(messaging.moveToTrashButton));
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", messaging.moveToTrashButton);
 
     }
 
