@@ -3,8 +3,9 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -77,19 +78,31 @@ public class US021_AssignmentsFeature extends GWD {
 
     @And("User inserts an image into the text editor.")
     public void insertImageInEditor() {
-        //??
+        String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\features\\files\\Test_foto.jpg";
+
+        getDriver().switchTo().frame(assign.textEditorFrame);
+        click(getDriver().findElement(By.id("tinymce")), 3);
+        getDriver().switchTo().defaultContent();
+
+        click(assign.insertImageButton, 3);
+
+        WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.cssSelector("input[type='file'][accept='image/*']")));
+        fileInput.sendKeys(filePath);
 
     }
 
     @And("User inserts a table into the text editor.")
     public void insertTableInEditor() {
-        //??
+        click(assign.insertTable, 3);
+        click(assign.tableMenuItem, 3);
+        click(assign.addTable, 3);
 
     }
 
     @And("User clicks 'Attach Files' and adds a file to the homework.")
     public void attachFileToHomework() throws InterruptedException, AWTException {
-        String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\testFiles\\EXCUSE_FILE.pdf";
+        String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\features\\files\\EXCUSE_FILE.pdf";
 
         click(assign.attachFiles, 3);
         click(assign.attachFromLocal, 3);
