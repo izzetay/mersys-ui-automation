@@ -16,7 +16,6 @@ Feature: Homework Submission
     And User pastes text into the text editor.
     And User inserts an image into the text editor.
     And User inserts a table into the text editor.
-    # üstteki 2 adım nasıl yapılacak?
     And User clicks 'Attach Files' and adds a file to the homework.
     And User clicks 'Save As Draft'.
     Then User should see a 'Success' message.
