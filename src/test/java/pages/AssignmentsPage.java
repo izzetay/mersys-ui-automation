@@ -79,6 +79,23 @@ public class AssignmentsPage extends ParentPage {
 
     @FindBy(xpath = "//*[text()='New Submission']")
     public WebElement submissonButton;
+
+    @FindBy(css = "iframe.tox-edit-area__iframe")
+    public WebElement textEditorFrame;
+
+    @FindBy(css = "button[aria-label='Insert image']")
+    public WebElement insertImageButton;
+
+    @FindBy(xpath = "//button[contains(@class,'tox-mbtn')][normalize-space()='Table']")
+    public WebElement insertTable;
+
+    @FindBy(xpath = "//div[@role='menuitem'][@title='Table']")
+    public WebElement tableMenuItem;
+
+    @FindBy(xpath = "//div[@role='button'][@aria-label='2 columns, 2 rows']")
+    public WebElement addTable;
+
+
     // US-20
     // Ödev listesindeki Information (Bilgi) ikonlarını temsil eden elementler
     @FindBy(css = "ms-icon-button[icon='info']")
