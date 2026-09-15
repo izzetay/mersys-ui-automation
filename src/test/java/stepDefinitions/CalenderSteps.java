@@ -237,23 +237,47 @@ public class CalenderSteps {
         System.out.println("A responsible course is visible and clickable.");
     }
 
-    // US-25 - Completed (E) durumundaki derslerden rastgele birine tıklar
+    // US-25 - Completed (E) durumundaki dersi bulana kadar önceki haftalara gider ve bulunan derslerden rastgele birine tıklar
     @And("User clicks on a random completed class")
     public void userClicksOnARandomCompletedClass() {
 
-        wait.until(ExpectedConditions.visibilityOfAllElements(cp.completedClasses));
+        int maxWeeks = 10;
 
-        Assert.assertFalse(cp.completedClasses.isEmpty(),
-                "No completed (E) classes were found!");
+        for (int i = 0; i < maxWeeks; i++) {
 
-        int randomIndex = new java.util.Random().nextInt(cp.completedClasses.size());
+            // Bu haftada Completed (E) ders var mı?
+            if (!cp.completedClasses.isEmpty()) {
 
-        WebElement randomCompletedClass = cp.completedClasses.get(randomIndex);
+                int randomIndex =
+                        new java.util.Random().nextInt(cp.completedClasses.size());
 
-        wait.until(ExpectedConditions.elementToBeClickable(randomCompletedClass));
-        randomCompletedClass.click();
+                WebElement randomCompletedClass =
+                        cp.completedClasses.get(randomIndex);
 
-        System.out.println("Clicked on a random completed (E) class.");
+                wait.until(ExpectedConditions.elementToBeClickable(randomCompletedClass));
+                randomCompletedClass.click();
+
+                System.out.println(
+                        "Clicked on a random completed (E) class.");
+                return;
+            }
+
+            // E ders yoksa bir önceki haftaya geç
+            wait.until(ExpectedConditions.elementToBeClickable(cp.previusPageButton));
+            cp.previusPageButton.click();
+
+            // Yeni haftanın yüklenmesini kısa süre bekle
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        Assert.fail(
+                "No completed (E) class was found within the previous "
+                        + maxWeeks + " weeks!"
+        );
     }
 
     // US-25 - Completed class detay penceresinde Recording butonunun görünür ve tıklanabilir olduğunu doğrular ve butona tıklar
